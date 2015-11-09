@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tarea#2</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.min.js"></script>
+    <script data-require="firebase@*" data-semver="1.0.18" src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
+    <script data-require="moment.js@*" data-semver="2.8.3" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.js"></script>
+    
+    <script type="text/javascript" src="bootstrap/ui-bootstrap-tpls-0.13.4.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="controllers.js"></script>
+
+  </head>
+  <body ng-app="chat-firebase" ng-controller="chatCtrl" class="container col-lg-8 col-lg-offset-4">
+
+    <!-- Caja para contener tu 'nickname' para el chat -->
+    <form role="form" class="form-horizontal well bs-componet col-lg-4 col-lg-offset-2">
+    <div class="row">
+      <div class="form-group col-lg-1 col-lg-offset-2">
+        <input type="text" ng-model="nickname" id="nickname" placeholder="Anonimo" class="form-control"/>
+      </div>
+    </div>
+
+    <!-- Caja de texto para escribir lo que desees y el boton para enviarlo al chat! -->
+    <div class="row">
+      <div class="form-group col-lg-8 col-lg-offset-2">
+        
+          <div>
+            <input type="text" class="form-control" id="chat-send" ng-model="chatSend" placeholder="Mensaje">
+          <br>
+          <div class="col-md-3">
+            <input type="button" ng-click="send()" class="btn btn-success" id="send-button" value="Enviar!" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+    
+   
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <label for="chats-box">Veamos que hay de Nuevo...</label>
+        <div id="chats-box" disabled="" ng-model="chats">
+          <div ng-repeat="chat in chats" id="chat">
+            <h3>{{chat.sender}} <small>escribio {{getTiempo(chat.time)}}:</small></h3>
+            <div>{{chat.text}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+    
+  </body>
+</html>
+
+   
